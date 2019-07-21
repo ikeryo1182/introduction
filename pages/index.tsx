@@ -8,7 +8,6 @@ interface Props {
 }
 
 const useCommentStepState = () => {
-  // TODO: boolean | null は気持ち悪いから enum 使う
   const [commentStep, setCommentStep] = React.useState<CommentStep>(CommentStep.CLOSE)
 
   return { commentStep, setCommentStep }
@@ -39,16 +38,42 @@ const IndexPage: NextPage<Props> = () => {
 
   return (
     <main>
-      <div>
-        Introduction Page ( <a href="https://github.com/ikeryo1182/introduction">GitHub</a> )
+      <div className="S W">
+        <h2>Introduction ( <a href="https://github.com/ikeryo1182/introduction">GitHub</a> )</h2>
+      </div>
+      <div className="S G">
+        <h2>PROFILE</h2>
+      </div>
+      <div className="S W">
+        <h2>WORKS</h2>
+      </div>
+      <div className="S G">
+        <h2>BLOG</h2>
       </div>
       <GlobalCommentForm comment={comment} commentStep={commentStep} onClick={handleClick} onChangeComment={handleChangeComment} onSubmit={handleSubmit} />
+      <style jsx global>{`
+      body { 
+        height: 100%;
+        margin:0 !important;
+      }
+    `}</style>
       <style jsx>{`
         * {
           user-select: none;
         }
         main {
           font-family: Avenir,Helvetica,Arial,sans-serif;
+        }
+        .S {
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          height:100vh;
+          margin:0;
+          padding:0;
+        }
+        .G {
+          background-color: #F9F9F9
         }
       `}</style>
     </main>
