@@ -1,6 +1,6 @@
 import React from 'react'
-import Comment from '../model/Comment';
-import CommentStep from '../enum/CommentStep';
+import Comment from '../models/Comment';
+import CommentStep from '../enums/CommentStep';
 
 interface Props {
     comment: Comment
