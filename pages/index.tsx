@@ -1,15 +1,17 @@
 import { NextPage } from 'next'
 import React from "react"
-import Comment, { CommentType } from '../components/Comment';
+import GlobalCommentForm from '../components/GlobalCommentForm';
+import Comment from '../model/Comment';
+import CommentStep from '../enum/CommentStep';
 
 interface Props {
 }
 
-const useIsOpenCommentState = () => {
+const useCommentStepState = () => {
   // TODO: boolean | null は気持ち悪いから enum 使う
-  const [isOpenComment, setIsOpenComment] = React.useState<boolean | null>(false)
+  const [commentStep, setCommentStep] = React.useState<CommentStep>(CommentStep.CLOSE)
 
-  return { isOpenComment, setIsOpenComment }
+  return { commentStep, setCommentStep }
 }
 
 const useCommentState = () => {
@@ -19,19 +21,19 @@ const useCommentState = () => {
 }
 
 const IndexPage: NextPage<Props> = () => {
-  const { isOpenComment, setIsOpenComment } = useIsOpenCommentState();
+  const { commentStep, setCommentStep } = useCommentStepState();
   const { comment, setComment } = useCommentState();
 
   const handleClick = () => {
-    setIsOpenComment(!isOpenComment)
+    setCommentStep(commentStep === CommentStep.CLOSE ? CommentStep.OPEN : CommentStep.CLOSE)
   }
 
-  const handleChangeComment = (comment: CommentType) => {
+  const handleChangeComment = (comment: Comment) => {
     setComment(comment);
   }
 
   const handleSubmit = () => {
-    setIsOpenComment(null);
+    setCommentStep(CommentStep.FINISHED);
     alert("Comment function is in development 😓")
   }
 
@@ -40,9 +42,7 @@ const IndexPage: NextPage<Props> = () => {
       <div>
         Introduction Page
       </div>
-      {isOpenComment !== null ? (
-        <Comment comment={comment} isOpen={isOpenComment} onClick={handleClick} onChangeComment={handleChangeComment} onSubmit={handleSubmit} />
-      ) : null}
+      <GlobalCommentForm comment={comment} commentStep={commentStep} onClick={handleClick} onChangeComment={handleChangeComment} onSubmit={handleSubmit} />
       <style jsx>{`
         * {
           user-select: none;
