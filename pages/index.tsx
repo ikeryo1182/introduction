@@ -1,8 +1,8 @@
 import { NextPage } from 'next'
 import React from "react"
 import GlobalCommentForm from '../components/GlobalCommentForm';
-import Comment from '../model/Comment';
-import CommentStep from '../enum/CommentStep';
+import Comment from '../models/Comment';
+import CommentStep from '../enums/CommentStep';
 
 interface Props {
 }
@@ -40,7 +40,7 @@ const IndexPage: NextPage<Props> = () => {
   return (
     <main>
       <div>
-        Introduction Page
+        Introduction Page ( <a href="https://github.com/ikeryo1182/introduction">GitHub</a> )
       </div>
       <GlobalCommentForm comment={comment} commentStep={commentStep} onClick={handleClick} onChangeComment={handleChangeComment} onSubmit={handleSubmit} />
       <style jsx>{`
