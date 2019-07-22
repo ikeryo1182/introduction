@@ -38,17 +38,38 @@ const IndexPage: NextPage<Props> = () => {
 
   return (
     <main>
-      <div className="S W">
-        <h2>Introduction ( <a href="https://github.com/ikeryo1182/introduction">GitHub</a> )</h2>
+      <div className="S">
+        <h2>INTRODUCTION ( <a href="https://github.com/ikeryo1182/introduction">GitHub</a> )</h2>
       </div>
       <div className="S G">
         <h2>PROFILE</h2>
+        <div className="D">
+          <div className="F">
+            <h3>NAME</h3>
+            <p>Ryo Ikeura</p>
+          </div>
+          <div className="F">
+            <h3>AGE</h3>
+            <p>26 ( 1993/4/24 )</p>
+          </div>
+          <div className="F">
+            <h3>SKILLS</h3>
+            <p>PENDING</p>
+          </div>
+        </div>
       </div>
-      <div className="S W">
+      <div className="S">
         <h2>WORKS</h2>
-      </div>
-      <div className="S G">
-        <h2>BLOG</h2>
+        <div className="D">
+          <div className="F">
+            <h3>JOB</h3>
+            <p>PENDING</p>
+          </div>
+          <div className="F">
+            <h3>BLOG</h3>
+            <p>PENDING</p>
+          </div>
+        </div>
       </div>
       <GlobalCommentForm comment={comment} commentStep={commentStep} onClick={handleClick} onChangeComment={handleChangeComment} onSubmit={handleSubmit} />
       <style jsx global>{`
@@ -67,6 +88,7 @@ const IndexPage: NextPage<Props> = () => {
         .S {
           display:flex;
           justify-content:center;
+          flex-direction:column;
           align-items:center;
           height:100vh;
           margin:0;
@@ -74,6 +96,22 @@ const IndexPage: NextPage<Props> = () => {
         }
         .G {
           background-color: #F9F9F9
+        }
+        .D {
+          width:30%;
+          display:flex;
+          justify-content:flex-start;
+          flex-direction:column;
+        }
+        .F {
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+        }
+        @media screen and (max-width:780px) {
+            .D {
+              width:80%;
+            }
         }
       `}</style>
     </main>
