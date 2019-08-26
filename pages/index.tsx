@@ -39,7 +39,7 @@ const IndexPage: NextPage<Props> = () => {
   return (
     <main>
       <div className="S">
-        <h2>INTRODUCTION ( <a href="https://github.com/ikeryo1182/introduction">GitHub</a> )</h2>
+        <h2>INTRODUCTION</h2>
       </div>
       <div className="S G">
         <h2>PROFILE</h2>
